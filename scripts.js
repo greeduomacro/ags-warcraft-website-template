@@ -44,6 +44,10 @@ $(function(){
 	Body.find('#raidviewer').each(function(index, Element){
 		var element = $(Element);
 		head.js(site_uri('js/jquery/ui/jquery.ui.sortable.min.js'), function(){
+			element.find('.mid li[title]').AGS_Tooltip();
+			element.find('#signup').each(function() {
+				$(this).AGS_Dialog({ type: 'form'});
+			});
 			element.find('.mid > div:first-child ul, .mid > div:nth-child(2) ul').sortable({
 				connectWith: ".connected",
 				cancel: ".disabled",
@@ -56,7 +60,7 @@ $(function(){
 						var from = $(ui.sender).attr('id');
 						var to = $(ui.item).parent().attr('id');// available, unavailable, tanks, healers, dps
 						//alert('player_id(' + player_id + ')  from(' + from + ')   to css id(' + to + ')');
-						
+						element.find('.mid li[title]').qtip('destroy');
 						// Ajax call to update database values
 					}
 				}
